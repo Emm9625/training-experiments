@@ -26,7 +26,7 @@ datasets:
     # conversation: mistral
 
 # Path to prepared dataset for training
-dataset_prepared_path: last_run_prepared
+dataset_prepared_path: /workspace/runs/last_run_prepared
 # Validation set size
 val_set_size: 0
 # Whether to train on inputs only
@@ -40,7 +40,7 @@ chat_template: inst
 
 # Hub Integration
 # Push dataset to Hugging Face Hub (empty value indicates not set)
-push_dataset_to_hub: Emm9625
+# push_dataset_to_hub: Emm9625
 # Model ID for pushing to the Hub (empty value indicates not set)
 hub_model_id: Emm9625/M7B-v0.1_SlimOrca-dedupe-4k-0224_QLORA_axolotl-defaults_Run01
 # Strategy for pushing to the Hub (empty value indicates not set)
@@ -84,7 +84,7 @@ warmup_ratio:
 weight_decay: 0.0
 
 # Evaluation and Logging
-output_dir: ./qlora-out
+output_dir: /workspace/runs/01
 logging_steps: 1
 # evals_per_epoch: 0
 eval_max_new_tokens: 128
