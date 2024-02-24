@@ -30,7 +30,7 @@ test_datasets:
     # ds_type: json
     # You need to specify a split. For "json" datasets the default split is called "train".
     split: test
-    shards: 3
+    shards: 10
     type: sharegpt
     conversation: mistral
 # Path to prepared dataset for training
