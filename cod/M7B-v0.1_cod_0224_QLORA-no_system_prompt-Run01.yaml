@@ -17,7 +17,7 @@ tf32: false
 # Dataset and Preprocessing
 datasets:
   # Dataset path on the Hub
-  - path: Emm9625/COD-0224-No_sys_prompt-sharegpt
+  - path: Emm9625/COD-0223-Sharegpt
     # Dataset type
     type: sharegpt
     # Split of the dataset used for training
@@ -26,7 +26,7 @@ datasets:
     conversation: mistral
 
 test_datasets:
-  - path: Emm9625/COD-0224-No_sys_prompt-sharegpt
+  - path: Emm9625/COD-0223-Sharegpt
     # ds_type: json
     # You need to specify a split. For "json" datasets the default split is called "train".
     split: test
