@@ -23,7 +23,7 @@ datasets:
     # Split of the dataset used for training
     train_on_split: train
     # Conversation style for preprocessing
-    # conversation: mistral
+    conversation: mistral
 
 test_datasets:
   - path: Emm9625/SlimOrca-dedupe-4k
@@ -91,7 +91,7 @@ warmup_ratio:
 weight_decay: 0.0
 
 # Evaluation and Logging
-output_dir: /workspace/runs/01
+output_dir: /workspace/runs/01/2
 logging_steps: 1
 
 eval_table_size: 16 # Approximate number of predictions sent to wandb depending on batch size. Enabled above 0. Default is 0
@@ -126,7 +126,7 @@ special_tokens:
 wandb_project: Qlora-Experiments
 wandb_entity:
 wandb_watch:
-wandb_name: Axolotl Defaults-eval
+wandb_name: Axolotl Defaults-eval-chat-template-mistral
 wandb_log_model:
 
 # Attention Mechanisms

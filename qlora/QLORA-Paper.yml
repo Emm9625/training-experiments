@@ -23,12 +23,12 @@ datasets:
     # Split of the dataset used for training
     train_on_split: train
     # Conversation style for preprocessing
-    # conversation: mistral
+    conversation: mistral
 
 # Path to prepared dataset for training
 dataset_prepared_path: /workspace/runs/02/last_run_prepared
 # Validation set size
-val_set_size: 0
+# val_set_size: 0
 # Whether to train on inputs only
 train_on_inputs: false
 # Group samples by length for efficient batching
