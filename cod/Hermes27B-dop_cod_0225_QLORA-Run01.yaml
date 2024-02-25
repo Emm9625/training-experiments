@@ -84,7 +84,7 @@ eval_sample_packing: false
 gradient_accumulation_steps: 1
 micro_batch_size: 8
 # num_epochs: 6
-num_steps: 1000
+max_steps: 1000
 optimizer: paged_adamw_8bit
 lr_scheduler: cosine
 # 2e-4 = 0.0002
