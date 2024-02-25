@@ -52,7 +52,7 @@ chat_template: OpenHermes-2.5-Mistral-7B
 # Push dataset to Hugging Face Hub (empty value indicates not set)
 # push_dataset_to_hub: Emm9625
 # Model ID for pushing to the Hub (empty value indicates not set)
-hub_model_id: Emm9625/M7B-instruct-v0.2_cod_0224_QLORA-Run01
+hub_model_id: Emm9625/Hermes27B-dop_cod_0225_QLORA-Run01
 # Strategy for pushing to the Hub (empty value indicates not set)
 hub_strategy: every_save
 # Use Hugging Face auth token for private datasets (empty value indicates not set)
