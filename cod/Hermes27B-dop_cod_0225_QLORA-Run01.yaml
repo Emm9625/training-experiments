@@ -46,7 +46,7 @@ group_by_length: false
 # Pad sequences to a fixed length
 pad_to_sequence_len: true
 # Chat template for preprocessing
-chat_template: OpenHermes-2.5-Mistral-7B
+chat_template: chatml
 
 # Hub Integration
 # Push dataset to Hugging Face Hub (empty value indicates not set)
