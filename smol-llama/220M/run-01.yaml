@@ -124,6 +124,7 @@ special_tokens:
   eos_token: "<|im_end|>"
 tokens:
   - "<|im_start|>"
+  - "<|im_end|>"
 
 # WandB Integration (Fill in as required)
 wandb_project: smol220M_DSMIX01_FFT
