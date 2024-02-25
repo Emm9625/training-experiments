@@ -26,15 +26,6 @@ datasets:
     # train_on_split: train
     # Conversation style for preprocessing
     conversation: chatml
-  # - path: LDJnr/Capybara
-  #     # Dataset type
-  #     # type: sharegpt
-  #     # Split of the dataset used for training
-  #     # train_on_split: train
-  #     # Conversation style for preprocessing
-  #   type: sharegpt
-  #   conversation: chatml
-# LDJnr/Capybara
 
 # test_datasets:
 #   - path: Emm9625/COD-0223-Sharegpt
