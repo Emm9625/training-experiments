@@ -76,12 +76,12 @@ lora_target_modules:
   - o_proj
 
 # Training Configuration
-sequence_len: 4096
+sequence_len: 4224
 sample_packing: true
 eval_sample_packing: false
 gradient_accumulation_steps: 1
 micro_batch_size: 8
-num_epochs: 6
+# num_epochs: 6
 optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
 # 2e-4 = 0.0002
@@ -97,11 +97,11 @@ logging_steps: 1
 
 eval_table_size: 0 # Approximate number of predictions sent to wandb depending on batch size. Enabled above 0. Default is 0
 eval_max_new_tokens: 0 # Total number of tokens generated for predictions sent to wandb. Default is 128
-eval_steps: # Leave empty to eval at each epoch, integers for every N steps. decimal for fraction of total steps
-evals_per_epoch: 1 # number of times per epoch to run evals, mutually exclusive with eval_steps
+eval_steps: 100 # Leave empty to eval at each epoch, integers for every N steps. decimal for fraction of total steps
+# evals_per_epoch: 1 # number of times per epoch to run evals, mutually exclusive with eval_steps
 save_strategy: # Set to `no` to skip checkpoint saves
-save_steps: # Leave empty to save at each epoch
-saves_per_epoch: 4 # number of times per epoch to save a checkpoint, mutually exclusive with save_steps
+save_steps: 100 # Leave empty to save at each epoch
+# saves_per_epoch: 4 # number of times per epoch to save a checkpoint, mutually exclusive with save_steps
 save_total_limit: # Checkpoints saved at a time
 
 
