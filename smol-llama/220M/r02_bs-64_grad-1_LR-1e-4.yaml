@@ -1,0 +1,145 @@
+# Model and Tokenizer Configuration
+# Base model for training
+base_model: BEE-spoke-data/smol_llama-220M-GQA
+# Model architecture type
+model_type: LlamaForCausalLM
+# Tokenizer used for model
+# tokenizer_type: LlamaTokenizer
+# tokenizer_config: NousResearch/Nous-Hermes-2-Mistral-7B-DPO
+tokenizer_type: LlamaTokenizer
+
+# Precision and Loading Options
+load_in_8bit: false
+load_in_4bit: false
+bf16: auto
+fp16:
+tf32: false
+# <ModelName>-v<Version>_<DatasetIdentifier>_<YYYY-MM-DD>_<TrainingType>_Run<ID>
+# M7B-v0.1_SlimOrca-dedupe-4k-0224_QLORA_axolotl-defaults_Run01
+# Dataset and Preprocessing
+datasets:
+  # Dataset path on the Hub
+  - path: Open-Orca/SlimOrca-Dedup
+    # Dataset type
+    type: sharegpt
+    # Split of the dataset used for training
+    # train_on_split: train
+    # Conversation style for preprocessing
+    conversation: chatml
+
+# test_datasets:
+#   - path: Emm9625/COD-0223-Sharegpt
+#     # ds_type: json
+#     # You need to specify a split. For "json" datasets the default split is called "train".
+#     split: test
+#     shards: 10
+#     type: sharegpt
+#     conversation: OpenHermes-2.5-Mistral-7B
+# Path to prepared dataset for training
+dataset_prepared_path: /workspace/runs/last_run_prepared/1/
+# Validation set size
+val_set_size: 0
+# Whether to train on inputs only
+train_on_inputs: false
+# Group samples by length for efficient batching
+group_by_length: false
+# Pad sequences to a fixed length
+pad_to_sequence_len: true
+# Chat template for preprocessing
+chat_template: chatml
+
+# Hub Integration
+# Push dataset to Hugging Face Hub (empty value indicates not set)
+push_dataset_to_hub: Emm9625
+# Model ID for pushing to the Hub (empty value indicates not set)
+hub_model_id: Emm9625/smol220M_DSMIX01_FFT_Run01-LR-1e4
+# Strategy for pushing to the Hub (empty value indicates not set)
+hub_strategy: every_save
+# Use Hugging Face auth token for private datasets (empty value indicates not set)
+hf_use_auth_token: true
+
+# Adapter and LoRA Settings
+# Adapter type
+# Adapter and LoRA Settings
+# adapter:
+# lora_model_dir:
+# lora_r: 64
+# lora_alpha: 16
+# lora_dropout: 0.05
+# lora_target_linear: true
+# lora_fan_in_fan_out:
+# lora_target_modules:
+#   - gate_proj
+#   - down_proj
+#   - up_proj
+#   - q_proj
+#   - v_proj
+#   - k_proj
+#   - o_proj
+
+# Training Configuration
+sequence_len: 2048
+sample_packing: true
+eval_sample_packing: false
+gradient_accumulation_steps: 1
+micro_batch_size: 64
+num_epochs: 3
+# max_steps: 1000
+optimizer: adamw_bnb_8bit
+lr_scheduler: cosine
+# 2e-4 = 0.0002
+learning_rate: 1e-4
+gradient_checkpointing: true
+warmup_steps: 100
+# warmup_ratio:
+weight_decay: 0.0
+
+# Evaluation and Logging
+output_dir: /notebooks/SMOL220M/run01
+logging_steps: 1
+
+eval_table_size: 0 # Approximate number of predictions sent to wandb depending on batch size. Enabled above 0. Default is 0
+eval_max_new_tokens: 0 # Total number of tokens generated for predictions sent to wandb. Default is 128
+eval_steps: 0 # Leave empty to eval at each epoch, integers for every N steps. decimal for fraction of total steps
+# evals_per_epoch: 1 # number of times per epoch to run evals, mutually exclusive with eval_steps
+save_strategy: # Set to `no` to skip checkpoint saves
+# save_steps: 100 # Leave empty to save at each epoch
+saves_per_epoch: 4 # number of times per epoch to save a checkpoint, mutually exclusive with save_steps
+save_total_limit: 2 # Checkpoints saved at a time
+
+
+early_stopping_patience:
+resume_from_checkpoint:
+local_rank:
+debug:
+deepspeed:
+fsdp:
+fsdp_config:
+
+# Loss Monitoring
+loss_watchdog_threshold: 5.0
+loss_watchdog_patience: 3
+
+special_tokens:
+  eos_token: "<|im_end|>"
+tokens:
+  - "<|im_start|>"
+  - "<|im_end|>"
+
+# WandB Integration (Fill in as required)
+wandb_project: smol220M_DSMIX01_FFT
+wandb_entity:
+wandb_watch:
+wandb_name: RUN01
+wandb_log_model:
+
+
+# Attention Mechanisms
+xformers_attention:
+flash_attention: true
+flash_attn_cross_entropy: false
+flash_attn_rms_norm: true
+flash_attn_fuse_qkv: false
+flash_attn_fuse_mlp: true
+
+strict: false
